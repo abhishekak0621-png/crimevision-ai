@@ -1,0 +1,339 @@
+{
+  "cases": [
+    {
+      "id": "CASE-2026-884",
+      "title": "Downtown Federal Depository Vault Incursion",
+      "incident_type": "Armed Commercial Robbery & Vault Breach",
+      "status": "Under Active AI Reconstruction",
+      "priority": "CRITICAL",
+      "date": "2026-10-24",
+      "lead_investigator": "Special Agent M. Reynolds (Forensics Div.)",
+      "summary": "At 21:14 UTC, motion sensors and CCTV CAM-04 detected unauthorized entry into Sub-Level 2 depository vault corridor. One suspect identified carrying a heavy pry tool and tactical bag. Witness emergency dispatch call received at 21:16 UTC reporting sounds of metal breach. Getaway vehicle flagged on perimeter CAM-09 at 21:18 UTC.",
+      "evidence_items": [
+        {
+          "id": "EV-001",
+          "type": "cctv_frame",
+          "title": "Corridor Cam 04 - Vault Level 2",
+          "timestamp": "2026-10-24T21:14:02Z",
+          "source": "Fixed Axis PTZ Camera (Hikvision Pro 4K)",
+          "file_url": "/static/assets/cctv_vault.jpg",
+          "hash_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "detections": [
+            {
+              "id": "DET-101",
+              "label": "Suspect (Male, ~182cm)",
+              "category": "person",
+              "confidence": 0.96,
+              "threat_level": "HIGH",
+              "box": [0.50, 0.25, 0.68, 0.92],
+              "attributes": {
+                "attire": "Black tactical hooded windbreaker, dark cargo pants, combat boots",
+                "face_occlusion": "Balaclava / shadow mask",
+                "gait": "Purposeful forward stride, left-hand stabilization"
+              }
+            },
+            {
+              "id": "DET-102",
+              "label": "Pry Bar / Forced Entry Weapon",
+              "category": "weapon",
+              "confidence": 0.92,
+              "threat_level": "SEVERE",
+              "box": [0.51, 0.58, 0.54, 0.70],
+              "attributes": {
+                "material": "Hardened carbon steel",
+                "length_estimate": "65 cm",
+                "classification": "Class III Burglary Instrument / Impact Weapon"
+              }
+            },
+            {
+              "id": "DET-103",
+              "label": "Tactical Duffle Bag",
+              "category": "object",
+              "confidence": 0.94,
+              "threat_level": "MEDIUM",
+              "box": [0.59, 0.49, 0.69, 0.68],
+              "attributes": {
+                "color": "OD Green Canvas",
+                "estimated_weight": "12-15 kg (based on strap strain and posture angle)"
+              }
+            },
+            {
+              "id": "DET-104",
+              "label": "Secured Vault Door 402",
+              "category": "infrastructure",
+              "confidence": 0.98,
+              "threat_level": "LOW",
+              "box": [0.24, 0.20, 0.36, 0.65],
+              "attributes": {
+                "electronic_keypad": "Tamper sensor bypassed at 21:13:58"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EV-002",
+          "type": "audio",
+          "title": "Witness 911 Dispatch Emergency Call #4409",
+          "timestamp": "2026-10-24T21:16:15Z",
+          "source": "Metropolitan Dispatch Trunk 911-B",
+          "file_url": "/static/assets/witness_call_911.wav",
+          "hash_sha256": "9a38f71120e8b4e7a796b34938f2921c17983617e4efc01ef0630b1b11783cf2",
+          "duration_sec": 12.0,
+          "acoustic_stress_score": 0.88,
+          "transcripts": [
+            {
+              "start": 0.5,
+              "end": 2.8,
+              "speaker": "Dispatcher Ramos",
+              "text": "911 Emergency, state your location and situation immediately.",
+              "entities": []
+            },
+            {
+              "start": 3.0,
+              "end": 7.2,
+              "speaker": "Witness (Night Custodian)",
+              "text": "Send police to the 4th Street Depository now! I heard loud metallic smashing down by Vault corridor 400!",
+              "entities": [
+                {"text": "4th Street Depository", "type": "LOCATION"},
+                {"text": "Vault corridor 400", "type": "LOCATION"},
+                {"text": "metallic smashing", "type": "ACOUSTIC_BREACH"}
+              ]
+            },
+            {
+              "start": 7.5,
+              "end": 11.6,
+              "speaker": "Witness (Night Custodian)",
+              "text": "Someone in all black just ran past with a heavy bag and jumped into a dark sedan heading West towards 7th Avenue!",
+              "entities": [
+                {"text": "all black", "type": "SUSPECT_ATTIRE"},
+                {"text": "heavy bag", "type": "OBJECT"},
+                {"text": "dark sedan", "type": "VEHICLE"},
+                {"text": "West towards 7th Avenue", "type": "DIRECTION"}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "EV-003",
+          "type": "cctv_frame",
+          "title": "Intersection Perimeter Cam 09 - 7th Ave & Market",
+          "timestamp": "2026-10-24T21:18:45Z",
+          "source": "Traffic Surveillance Automated Plate Reader",
+          "file_url": "/static/assets/getaway_car.jpg",
+          "hash_sha256": "b78912e75390fc4219baefc94723019aa123b39247198751912a7812bc859231",
+          "detections": [
+            {
+              "id": "DET-201",
+              "label": "Suspect Getaway Vehicle (BMW 5-Series / Charcoal)",
+              "category": "vehicle",
+              "confidence": 0.98,
+              "threat_level": "HIGH",
+              "box": [0.36, 0.42, 0.67, 0.72],
+              "attributes": {
+                "velocity": "52 MPH (Speed limit 25 MPH)",
+                "heading": "North-West towards Interstate 90 Ramp",
+                "telemetry": "Active evasive maneuver across pedestrian zebra"
+              }
+            },
+            {
+              "id": "DET-202",
+              "label": "License Plate: B 734 WXP",
+              "category": "license_plate",
+              "confidence": 0.95,
+              "threat_level": "CRITICAL",
+              "box": [0.59, 0.57, 0.65, 0.64],
+              "attributes": {
+                "registration_status": "Reported Stolen 36 hours prior in Sector 4",
+                "plate_origin": "District Metropolitan Registration"
+              }
+            }
+          ]
+        },
+        {
+          "id": "EV-004",
+          "type": "crime_scene_photo",
+          "title": "Alleyway Egress Forensic Recovery Zone",
+          "timestamp": "2026-10-24T21:42:10Z",
+          "source": "CSI Mobile Unit DSLR (Nikon D850 Forensic Macro)",
+          "file_url": "/static/assets/crime_scene.jpg",
+          "hash_sha256": "a190823c109401bfd94801e9124018274a9192019481940129a8e91289123891",
+          "detections": [
+            {
+              "id": "DET-301",
+              "label": "Evidence Marker 01: Discarded Handgun (9mm Semi-Auto)",
+              "category": "weapon",
+              "confidence": 0.97,
+              "threat_level": "SEVERE",
+              "box": [0.43, 0.64, 0.49, 0.70],
+              "attributes": {
+                "make_model": "Glock 19 Gen 5 with serial obliterated",
+                "status": "Hammer cocked, chambered 9mm round, partial thumb print on slide"
+              }
+            },
+            {
+              "id": "DET-302",
+              "label": "Evidence Marker 02: Spent 9mm Luger Shell Casing",
+              "category": "ballistics",
+              "confidence": 0.93,
+              "threat_level": "HIGH",
+              "box": [0.54, 0.65, 0.58, 0.71],
+              "attributes": {
+                "caliber": "9x19mm Parabellum, Federal Premium stamp"
+              }
+            },
+            {
+              "id": "DET-303",
+              "label": "Evidence Marker 03: Footwear Impression (Vibram Lug Sole)",
+              "category": "impression",
+              "confidence": 0.91,
+              "threat_level": "MEDIUM",
+              "box": [0.62, 0.66, 0.66, 0.72],
+              "attributes": {
+                "size": "US Men's Size 11.5",
+                "tread_pattern": "Matches suspect boots spotted in CAM-04"
+              }
+            }
+          ]
+        }
+      ],
+      "chronological_timeline": [
+        {
+          "time_utc": "2026-10-24T21:13:58Z",
+          "relative_time": "T-00:00",
+          "phase": "Initial Breach",
+          "event_title": "Vault Sub-Level 2 Keypad Bypass",
+          "evidence_ref": "EV-001",
+          "confidence": 0.98,
+          "summary": "Motion sensors tripped at Corridor 400. Door 402 magnetic locking mechanism de-energized via external bypass tool.",
+          "threat_flag": "HIGH"
+        },
+        {
+          "time_utc": "2026-10-24T21:14:02Z",
+          "relative_time": "T+00:04",
+          "phase": "Intrusion & Visual Detection",
+          "event_title": "Suspect Detected on CAM-04 with Heavy Pry Weapon",
+          "evidence_ref": "EV-001",
+          "confidence": 0.96,
+          "summary": "Multimodal CV detects male suspect (182cm) carrying tactical duffle and hardened steel pry bar approaching Vault door.",
+          "threat_flag": "SEVERE"
+        },
+        {
+          "time_utc": "2026-10-24T21:15:30Z",
+          "relative_time": "T+01:32",
+          "phase": "Audible Disturbance",
+          "event_title": "Acoustic Impact & Alarm Strobe Trigger",
+          "evidence_ref": "EV-002",
+          "confidence": 0.91,
+          "summary": "Acoustic sensor register sharp impulse (>95dB) consistent with mechanical force applied to secondary safe latch.",
+          "threat_flag": "CRITICAL"
+        },
+        {
+          "time_utc": "2026-10-24T21:16:15Z",
+          "relative_time": "T+02:17",
+          "phase": "Witness Emergency Call",
+          "event_title": "Witness 911 Call Logged from Custodian Station",
+          "evidence_ref": "EV-002",
+          "confidence": 0.95,
+          "summary": "Night custodian reports suspect in black fleeing with duffle bag toward West exit into waiting dark vehicle.",
+          "threat_flag": "CRITICAL"
+        },
+        {
+          "time_utc": "2026-10-24T21:18:45Z",
+          "relative_time": "T+04:47",
+          "phase": "Evasion & Tracking",
+          "event_title": "Getaway Sedan Flagged on CAM-09 (License Plate: B 734 WXP)",
+          "evidence_ref": "EV-003",
+          "confidence": 0.98,
+          "summary": "Automatic License Plate Recognition matches stolen BMW 5-series speeding at 52 MPH westbound onto Interstate corridor.",
+          "threat_flag": "HIGH"
+        },
+        {
+          "time_utc": "2026-10-24T21:42:10Z",
+          "relative_time": "T+28:12",
+          "phase": "Forensic Cordon & Recovery",
+          "event_title": "CSI Discovery of Jettisoned Glock 19 & Shell Casing in Alley",
+          "evidence_ref": "EV-004",
+          "confidence": 0.97,
+          "summary": "Forensic unit recovers discarded semi-automatic firearm, spent 9mm casing, and shoe tread impression matching suspect.",
+          "threat_flag": "SEVERE"
+        }
+      ],
+      "chain_of_custody": [
+        {
+          "log_id": "COC-901",
+          "timestamp": "2026-10-24T21:45:00Z",
+          "officer": "Officer K. Vance (Shield #4120)",
+          "action": "Evidence Cordon Secured & Video Feeds Exported with cryptographic SHA-256 seal",
+          "status": "VERIFIED"
+        },
+        {
+          "log_id": "COC-902",
+          "timestamp": "2026-10-24T22:15:30Z",
+          "officer": "Det. J. Miller (Major Crimes)",
+          "action": "Audio 911 tape subpoenaed & imported into CrimeVision AI Multimodal Ingestion Pipeline",
+          "status": "VERIFIED"
+        },
+        {
+          "log_id": "COC-903",
+          "timestamp": "2026-10-24T22:30:12Z",
+          "officer": "Forensic Analyst Dr. S. Chen",
+          "action": "Ballistic & weapon markers 01-03 logged into physical vault locker #B-14",
+          "status": "VERIFIED"
+        }
+      ]
+    },
+    {
+      "id": "CASE-2026-902",
+      "title": "Port Authority Industrial Warehouse Infiltration",
+      "incident_type": "Commercial Burglary & Counterfeit Smuggling",
+      "status": "Analysis In Progress",
+      "priority": "HIGH",
+      "date": "2026-10-27",
+      "lead_investigator": "Captain R. Thorne",
+      "summary": "Motion sensors at Cargo Bay 12 triggered after hours. Two masked individuals spotted tampering with customs seals on high-value cargo container #MAEU-9921.",
+      "evidence_items": [
+        {
+          "id": "EV-101",
+          "type": "cctv_frame",
+          "title": "Cargo Bay 12 Overlook Cam",
+          "timestamp": "2026-10-27T02:40:15Z",
+          "source": "Port Facility Thermal Pan-Tilt-Zoom",
+          "file_url": "/static/assets/cctv_vault.jpg",
+          "hash_sha256": "4b92c43110e8b4e7a796b34938f2921c17983617e4efc01ef0630b1b11783cf2",
+          "detections": [
+            {
+              "id": "DET-401",
+              "label": "Suspect 1 (Heavy Coat, Bolt Cutters)",
+              "category": "person",
+              "confidence": 0.94,
+              "threat_level": "HIGH",
+              "box": [0.45, 0.28, 0.65, 0.90],
+              "attributes": {"tool": "Industrial 36-inch bolt cutter"}
+            }
+          ]
+        }
+      ],
+      "chronological_timeline": [
+        {
+          "time_utc": "2026-10-27T02:40:15Z",
+          "relative_time": "T-00:00",
+          "phase": "Perimeter Breach",
+          "event_title": "Thermal Sensors Triggered at Pier 4",
+          "evidence_ref": "EV-101",
+          "confidence": 0.94,
+          "summary": "Two figures breach perimeter fence with heavy bolt cutters.",
+          "threat_flag": "HIGH"
+        }
+      ],
+      "chain_of_custody": [
+        {
+          "log_id": "COC-950",
+          "timestamp": "2026-10-27T03:00:00Z",
+          "officer": "Port Security Sergeant D. Alvarez",
+          "action": "Thermal surveillance stream secured and hashed",
+          "status": "VERIFIED"
+        }
+      ]
+    }
+  ]
+}
